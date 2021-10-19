@@ -5,19 +5,19 @@ import java.util.*;
 
 public class MultiThread implements Runnable {
     public Socket clientSocket;
-
+    //constructor to pass in the socket
     public MultiThread(Socket s) {
     clientSocket = s;
     }
-
+    //declaring all necessary variables
     public static BufferedReader br;
     public static BufferedReader br_in;
     public static PrintWriter dos;
-
     public static String bookName;
     public static int quantity;
     public static int selected;
     public static double tCost;
+    //initializing to boolean variable for option 3 to false
     public static boolean recommendBook = false;
     
     public void run(){
@@ -25,37 +25,46 @@ public class MultiThread implements Runnable {
             br = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             dos = new PrintWriter(clientSocket.getOutputStream(), true);
             br_in = new BufferedReader(new InputStreamReader(System.in));
+            //starting page that is displayed on the client side
             displayWelcome();
+            dos.close();
+            br.close();
+            clientSocket.close();
         } catch(IOException e){
             System.out.println(e);
         }
     }
-
+    //the first option which adds new order
+    //also handles option 3 to use recommended book
     public static void takeOrder(){
         try {
             System.out.println("Taking order... ");
             if(recommendBook == true) {
+                //using recommended book from server
                 bookName = useRecommended();
                 dos.println("Recommended Top Seller: " + bookName);
             } else {
                 dos.println("Enter the name of the book: ");
                 bookName = br.readLine();
             }
+            //else continues to get the quantity
             dos.println("Enter the quantity: ");
             quantity = Integer.parseInt(br.readLine());
             double cost = calcTotal(bookName, quantity);
             tCost += cost;
+            //sends client order confirmation
             dos.println("New Order Addded Succesfully!");
             System.out.println("Client Added Book!");
         } catch (IOException e) {
             e.printStackTrace();
         }     
     }
-
+    //starting page that handles all options for client
     public static void displayWelcome(){
         try {
+            //exits when user types in -1
             while(selected != -1){
-                dos.println("Please select one of the options: 1 - Give Book Order , 2 - View Total Cost, 3 - Best Seller Recommendation, - 1 - exit");
+                dos.println("Please select one of the options: 1 - Give New Book Order , 2 - View Total Cost, 3 - Best Seller Recommendation, -1 - exit");
                 selected = Integer.parseInt(br.readLine());
                 System.out.println("Client Selected Option " + selected);
                 if(selected == 1){
