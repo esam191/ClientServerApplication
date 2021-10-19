@@ -56,19 +56,19 @@ public class Client {
 
    public static void respondOne(){
      try {
-        if(recommendBook == false){
+        if(recommendBook == true){
+          System.out.println(br_ser.readLine());
+        } else {
           System.out.println(br_ser.readLine()); 
           String bookName = br.readLine();
           dos.println(bookName);
           dos.flush();
-        } else {
-            System.out.println(br_ser.readLine());
-            System.out.println(br_ser.readLine());
-            String quantity = br.readLine();
-            dos.println(quantity);
-            dos.flush();
-            System.out.println("Server reply: \n" + br_ser.readLine());
-         }
+        }
+          System.out.println(br_ser.readLine());
+          String quantity = br.readLine();
+          dos.println(quantity);
+          dos.flush();
+          System.out.println("Server reply: " + br_ser.readLine());
      } catch (IOException e) {
        e.printStackTrace();
      } 

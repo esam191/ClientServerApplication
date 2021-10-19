@@ -19,8 +19,6 @@ public class MultiThread implements Runnable {
     public static int selected;
     public static double tCost;
     public static boolean recommendBook = false;
-    public static final String reset = "\u001B[0m";
-    public static final String green = "\u001B[32m";
     
     public void run(){
         try{
@@ -34,7 +32,6 @@ public class MultiThread implements Runnable {
     }
 
     public static void takeOrder(){
-        
         try {
             System.out.println("Taking order... ");
             if(recommendBook == true) {
@@ -44,12 +41,11 @@ public class MultiThread implements Runnable {
                 dos.println("Enter the name of the book: ");
                 bookName = br.readLine();
             }
-            
             dos.println("Enter the quantity: ");
             quantity = Integer.parseInt(br.readLine());
             double cost = calcTotal(bookName, quantity);
             tCost += cost;
-            dos.println(" New Order Addded Succesfully!");
+            dos.println("New Order Addded Succesfully!");
             System.out.println("Client Added Book!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,7 +57,6 @@ public class MultiThread implements Runnable {
             while(selected != -1){
                 dos.println("Please select one of the options: 1 - Give Book Order , 2 - View Total Cost, 3 - Best Seller Recommendation, - 1 - exit");
                 selected = Integer.parseInt(br.readLine());
-    
                 System.out.println("Client Selected Option " + selected);
                 if(selected == 1){
                     takeOrder();
