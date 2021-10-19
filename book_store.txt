@@ -1,0 +1,12 @@
+Book Name, Cost
+Harry Potter and the Deathly Hallows,60
+Harry Potter and the Philosopher's Stone,50
+Fifty Shades of Grey,45
+Twilight,55
+The Fault in Our Stars,78
+Gone Girl,53
+Eclipse,30
+One Day,30
+Black Beauty,62
+To Kill A Mockingbird,112
+The Great Gatsby,136
