@@ -64,7 +64,7 @@ public class MultiThread implements Runnable {
         try {
             //exits when user types in -1
             while(selected != -1){
-                dos.println("Please select one of the options: 1 - Give New Book Order , 2 - View Total Cost, 3 - Best Seller Recommendation, -1 - exit");
+                dos.println("Please select one of the options: 1 - Give New Book Order , 2 - View Total Cost, 3 - Best Seller Recommendation, 4 - View Receipt, -1 - exit");
                 selected = Integer.parseInt(br.readLine());
                 System.out.println("Client Selected Option " + selected);
                 if(selected == 1){
@@ -84,21 +84,21 @@ public class MultiThread implements Runnable {
             e.printStackTrace();
         }     
     }
-
-     public static void displayTotal(){
-         dos.println("Your total cost is: $" + tCost + " plus tax");   
-     }
-
-     public static void displayReceipt(){
-         double tax = 0.08 * tCost;
-         double total = tCost + tax;
-         Date d = new Date();
-         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd:HH-mm-ss");
-         String date = sdf.format(d);
-         String timeStamp = "Receipt: Your total order for today including HST (ON - 8%): ";
-         dos.println(timeStamp + total + " - Today's Date: " + date);
+    //method to display the client's total cost of order
+    public static void displayTotal(){
+        dos.println("Your total cost is: $" + tCost + " plus tax");   
     }
-
+    //displays receipt that includes tax calculation and time stamp
+    public static void displayReceipt(){
+        double tax = 0.08 * tCost;
+        double total = tCost + tax;
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd:HH-mm-ss");
+        String date = sdf.format(d);
+        String timeStamp = "Receipt: Your total order for today including HST (ON - 8%): ";
+        dos.println(timeStamp + total + " - Today's Date: " + date);
+    }
+    //calculates the total cost by finding book+cost in the text file
     public static double calcTotal(String bookName, int quantity){
         File file = new File("book_store.txt");
         double total_cost = 0;
@@ -118,7 +118,7 @@ public class MultiThread implements Runnable {
         }
         return total_cost;
     }
-
+    //returns a random book from the list of best sellers
     public static String useRecommended(){
         List<String> topSellers = Arrays.asList("To Kill A Mockingbird", "The Great Gatsby", "The Hunger Games", "The Fault in Our Stars", "Gone Girl");
         Random r = new Random();
