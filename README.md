@@ -10,7 +10,7 @@ Follow the instructions below to run the project on your local machine for devel
 
 git clone https://github.com/esam191/ClientServerApplication
 
-- Start the server
+- Start the Server
 
 ```
 Usage: java Server <port number>
@@ -21,3 +21,4 @@ Usage: java Server <port number>
 ```
 Usage: java Client <host name> <port number>
 ```
+Select one of the options: 1 - Give New Book Order , 2 - View Total Cost, 3 - Best Seller Recommendation, 4 - View Receipt, -1 - exit
