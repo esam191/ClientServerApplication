@@ -21,4 +21,6 @@ Usage: java Server <port number>
 ```
 Usage: java Client <host name> <port number>
 ```
+```
 Select one of the options: 1 - Give New Book Order , 2 - View Total Cost, 3 - Best Seller Recommendation, 4 - View Receipt, -1 - exit
+```
