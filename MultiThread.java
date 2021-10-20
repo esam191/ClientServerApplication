@@ -55,6 +55,7 @@ public class MultiThread implements Runnable {
             //sends client order confirmation
             dos.println("New Order Addded Succesfully!");
             System.out.println("Client Added Book!");
+            recommendBook = false;
         } catch (IOException e) {
             e.printStackTrace();
         }     
@@ -74,11 +75,11 @@ public class MultiThread implements Runnable {
                 } else if(selected == 3){
                     recommendBook = true;
                     takeOrder();
-                    recommendBook = false;
                 } else if(selected == 4){
                     displayReceipt();
                 }
             }
+            System.out.println("Client Exited!");
             selected = 0;
             tCost = 0; 
         } catch (IOException e) {
@@ -87,7 +88,8 @@ public class MultiThread implements Runnable {
     }
     //method to display the client's total cost of order
     public static void displayTotal(){
-        dos.println("Your total cost is: $" + tCost + " plus tax");   
+        dos.println("Your total cost is: $" + tCost + " plus tax");
+        System.out.println("Total Cost Displayed!");   
     }
     //displays receipt that includes tax calculation and time stamp
     public static void displayReceipt(){
@@ -98,6 +100,7 @@ public class MultiThread implements Runnable {
         String date = sdf.format(d);
         String timeStamp = "Receipt: Your total order for today including HST (ON - 8%): ";
         dos.println(timeStamp + total + " - Today's Date: " + date);
+        System.out.println("Receipt Displayed!");   
     }
     //calculates the total cost by finding book+cost in the text file
     public static double calcTotal(String bookName, int quantity){
@@ -121,6 +124,7 @@ public class MultiThread implements Runnable {
     }
     //returns a random book from the list of best sellers
     public static String useRecommended(){
+        System.out.println("Recommending Top Seller... ");
         List<String> topSellers = Arrays.asList("To Kill A Mockingbird", "The Great Gatsby", "The Hunger Games", "The Fault in Our Stars", "Gone Girl");
         Random r = new Random();
         int random = r.nextInt(topSellers.size());
