@@ -46,6 +46,7 @@ public class Client {
           } else if(Integer.parseInt(selected) == 3){
               recommendBook = true;
               respondOne();
+              recommendBook = false;
           } else if(Integer.parseInt(selected) == 4){
             System.out.println("Server reply: \n" + br_ser.readLine());
           }

@@ -74,6 +74,7 @@ public class MultiThread implements Runnable {
                 } else if(selected == 3){
                     recommendBook = true;
                     takeOrder();
+                    recommendBook = false;
                 } else if(selected == 4){
                     displayReceipt();
                 }
